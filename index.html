@@ -854,39 +854,41 @@ buildPostres(); buildCafes(); buildTe(); buildPmenu(); loadPedido(); menuContain
 if('serviceWorker' in navigator){ try{ navigator.serviceWorker.register('service-worker.js'); }catch(e){} }
 
 function confirmReset(){
-  panel.innerHTML='';
-  const t=document.createElement('h3');t.textContent='¿Borrar la comanda?';panel.appendChild(t);
-  const p=document.createElement('div');p.style.margin='8px 0 12px';p.textContent='¿Seguro que quieres borrar la comanda?';panel.appendChild(p);
- const c=document.createElement('button');
-c.textContent='Cancelar';
-c.className='btn';
-c.style.background='#c40000';  // fondo rojo
-c.style.color='#fff';           // letra blanca
-c.onclick=()=>cerrarModal();
+  panel.innerHTML = '';
 
-  const d=document.createElement('button');d.textContent='Borrar';d.className='confirm';d.onclick=()=>resetPedido();
-  const w=document.createElement('div');w.style.display='flex';w.style.gap='8px';w.appendChild(c);w.appendChild(d);
+  // Título
+  const t = document.createElement('h3');
+  t.textContent = '¿Borrar la comanda?';
+  panel.appendChild(t);
+
+  // Texto
+  const p = document.createElement('div');
+  p.style.margin = '8px 0 12px';
+  p.textContent = '¿Seguro que quieres borrar la comanda?';
+  panel.appendChild(p);
+
+  // Botón Cancelar
+  const c = document.createElement('button');
+  c.textContent = 'Cancelar';
+  c.className = 'btn-cancel-reset'; // nueva clase exclusiva
+  c.onclick = () => cerrarModal();
+
+  // Botón Borrar
+  const d = document.createElement('button');
+  d.textContent = 'Borrar';
+  d.className = 'confirm';
+  d.onclick = () => resetPedido();
+
+  // Contenedor de botones
+  const w = document.createElement('div');
+  w.style.display = 'flex';
+  w.style.gap = '8px';
+  w.appendChild(c);
+  w.appendChild(d);
   panel.appendChild(w);
+
   abrirModal();
 }
-function resetPedido(){
-  pedido={};
-  try{
-    localStorage.removeItem('postres_pedido');
-    localStorage.removeItem('postres_mesa');
-    localStorage.removeItem('postres_extra');
-  }catch(e){}
-  try{ mesaInput.value=''; }catch(e){}
-  try{ notaExtra.value=''; }catch(e){}
-  try{ renderTicket(); savePedido(); flashTicket(); }catch(e){}
-  try{ cerrarModal(); }catch(e){}
-}
-document.addEventListener('DOMContentLoaded',()=>{
-  const rb=document.getElementById('resetBtn');
-  if(rb){
-    rb.onclick=confirmReset;
-  }
-});
 
 
 /* Bottom sheet mesas */
