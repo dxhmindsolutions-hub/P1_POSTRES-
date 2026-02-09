@@ -696,15 +696,53 @@ function mostrarFlan(item){
 
 function mostrarNotaCafe(cafe){
   if(!mesaInput.value) return mesaInput.focus();
-  panel.innerHTML=''; panel.appendChild(crearTitulo(cafe));
-  const t = document.createElement('input'); t.className='input'; t.placeholder='Nota (opcional)'; panel.appendChild(t);
-  const lbl1 = document.createElement('label'); lbl1.innerHTML = '<input type="checkbox" id="descaf"> DESCAFEINADO'; panel.appendChild(lbl1);
-  const lbl2 = document.createElement('label'); lbl2.innerHTML = '<input type="checkbox" id="conh"> CON HIELO'; panel.appendChild(lbl2);
-  const btn = document.createElement('button'); btn.className='confirm'; btn.textContent='Añadir';
-  btn.onclick = function(){ let final = cafe; if(document.getElementById('descaf') && document.getElementById('descaf').checked) final += ' (DESCAFEINADO)'; if(document.getElementById('conh') && document.getElementById('conh').checked) final += ' (CON HIELO)'; if(t.value && t.value.trim()) final += ' ('+t.value.trim()+')'; addItem(final); cerrarModal(); };
+
+  panel.innerHTML='';
+  panel.appendChild(crearTitulo(cafe));
+
+  const t = document.createElement('input');
+  t.className='input';
+  t.placeholder='Nota (opcional)';
+  panel.appendChild(t);
+
+  const lbl1 = document.createElement('label');
+  lbl1.innerHTML = '<input type="checkbox" id="descaf"> DESCAFEINADO';
+  panel.appendChild(lbl1);
+
+  const lbl2 = document.createElement('label');
+  lbl2.innerHTML = '<input type="checkbox" id="conh"> CON HIELO';
+  panel.appendChild(lbl2);
+
+  const lbl3 = document.createElement('label');
+  lbl3.innerHTML = '<input type="checkbox" id="sinlactosa"> SIN LACTOSA';
+  panel.appendChild(lbl3);
+
+  const lbl4 = document.createElement('label');
+  lbl4.innerHTML = '<input type="checkbox" id="sacarina"> SACARINA';
+  panel.appendChild(lbl4);
+
+  const btn = document.createElement('button');
+  btn.className='confirm';
+  btn.textContent='Añadir';
+
+  btn.onclick = function(){
+    let final = cafe;
+
+    if(document.getElementById('descaf')?.checked) final += ' (DESCAFEINADO)';
+    if(document.getElementById('conh')?.checked) final += ' (CON HIELO)';
+    if(document.getElementById('sinlactosa')?.checked) final += ' (SIN LACTOSA)';
+    if(document.getElementById('sacarina')?.checked) final += ' (SACARINA)';
+
+    if(t.value && t.value.trim()) final += ' ('+t.value.trim()+')';
+
+    addItem(final);
+    cerrarModal();
+  };
+
   panel.appendChild(btn);
   abrirModal();
 }
+
 
 function mostrarTe(name){
   if(!mesaInput.value) return mesaInput.focus();
