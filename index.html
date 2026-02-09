@@ -447,7 +447,7 @@ h1, h2, h3 {
   
 <div class="controls">
   <button id="openMesa" class="btn">Mesa ▾</button>
-  <input id="mesaInput" class="input" type="text" inputmode="numeric" pattern="[0-9]*" placeholder="Mesa" readonly>
+  <input id="mesaInput" class="input mesa-input" type="text" inputmode="numeric" pattern="[0-9]*" placeholder="Mesa" readonly>
   <button id="resetBtn" class="btn">Reset</button>
 </div>
 
@@ -903,5 +903,16 @@ document.addEventListener("scroll", () => {
 
 </body>
 </html>
+<style>
+.mesa-input {
+  width: 70px;
+  flex: 0 0 70px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 800;
+  padding: 10px;
+}
+</style>
 
-<style>#resetBtn{background:#c40000!important;color:white!important;}</style>
+<style>#resetBtn{background:#c40000!important;color:white!important;}
+</style>
