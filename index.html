@@ -853,7 +853,7 @@ buildPostres(); buildCafes(); buildTe(); buildPmenu(); loadPedido(); menuContain
 // Service worker (if exists)
 if('serviceWorker' in navigator){ try{ navigator.serviceWorker.register('service-worker.js'); }catch(e){} }
 
-function confirmReset(){
+function confirmReset() {
   panel.innerHTML = '';
 
   // Título
@@ -870,13 +870,13 @@ function confirmReset(){
   // Botón Cancelar
   const c = document.createElement('button');
   c.textContent = 'Cancelar';
-  c.className = 'btn-cancel-reset'; // nueva clase exclusiva
+  c.className = 'btn-cancel-reset'; // ✅ solo esta clase
   c.onclick = () => cerrarModal();
 
   // Botón Borrar
   const d = document.createElement('button');
   d.textContent = 'Borrar';
-  d.className = 'confirm';
+  d.className = 'confirm'; // ✅ la clase confirm que ya tenías
   d.onclick = () => resetPedido();
 
   // Contenedor de botones
@@ -889,6 +889,7 @@ function confirmReset(){
 
   abrirModal();
 }
+
 
 
 /* Bottom sheet mesas */
