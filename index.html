@@ -857,7 +857,13 @@ function confirmReset(){
   panel.innerHTML='';
   const t=document.createElement('h3');t.textContent='¿Borrar la comanda?';panel.appendChild(t);
   const p=document.createElement('div');p.style.margin='8px 0 12px';p.textContent='¿Seguro que quieres borrar la comanda?';panel.appendChild(p);
-  const c=document.createElement('button');c.textContent='Cancelar';c.className='btn';c.style.background='#ddd';c.onclick=()=>cerrarModal();
+ const c=document.createElement('button');
+c.textContent='Cancelar';
+c.className='btn';
+c.style.background='#c40000';  // fondo rojo
+c.style.color='#fff';           // letra blanca
+c.onclick=()=>cerrarModal();
+
   const d=document.createElement('button');d.textContent='Borrar';d.className='confirm';d.onclick=()=>resetPedido();
   const w=document.createElement('div');w.style.display='flex';w.style.gap='8px';w.appendChild(c);w.appendChild(d);
   panel.appendChild(w);
