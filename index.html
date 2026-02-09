@@ -853,6 +853,15 @@ buildPostres(); buildCafes(); buildTe(); buildPmenu(); loadPedido(); menuContain
 // Service worker (if exists)
 if('serviceWorker' in navigator){ try{ navigator.serviceWorker.register('service-worker.js'); }catch(e){} }
 
+  function resetPedido() {
+  pedido = {};             // vacía el pedido
+  mesaInput.value = '';    // limpia mesa
+  notaExtra.value = '';    // limpia nota
+  renderTicket();          // actualiza ticket
+  savePedido();            // limpia localStorage
+  flashTicket();           // efecto visual
+}
+
 function confirmReset() {
   panel.innerHTML = '';
 
