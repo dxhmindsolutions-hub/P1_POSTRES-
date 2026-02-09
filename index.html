@@ -870,14 +870,17 @@ function confirmReset() {
   // Botón Cancelar
   const c = document.createElement('button');
   c.textContent = 'Cancelar';
-  c.className = 'btn-cancel-reset'; // ✅ solo esta clase
+  c.className = 'btn-cancel-reset'; // ❌ no pongas 'btn'
   c.onclick = () => cerrarModal();
 
   // Botón Borrar
   const d = document.createElement('button');
   d.textContent = 'Borrar';
-  d.className = 'confirm'; // ✅ la clase confirm que ya tenías
-  d.onclick = () => resetPedido();
+  d.className = 'confirm';
+  d.onclick = () => {
+    resetPedido();   // limpia pedido y localStorage
+    cerrarModal();   // cierra modal
+  };
 
   // Contenedor de botones
   const w = document.createElement('div');
@@ -889,6 +892,7 @@ function confirmReset() {
 
   abrirModal();
 }
+
 
 
 
