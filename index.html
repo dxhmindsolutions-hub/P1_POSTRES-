@@ -893,8 +893,11 @@ function confirmReset() {
   abrirModal();
 }
 
-
-
+  // Conectar el botón Reset con la función
+  document.addEventListener('DOMContentLoaded', () => {
+    const rb = document.getElementById('resetBtn');
+    if (rb) rb.onclick = confirmReset;
+  });
 
 /* Bottom sheet mesas */
 const openMesa = document.getElementById('openMesa');
